@@ -1,9 +1,6 @@
 // Connecting to the MongoDB database using mongoose
 // 1. // -------------------{imports}--------------
-import dotenv from 'dotenv'
 import mongoose from 'mongoose'
-
-dotenv.config();
 
 const connectMonDB = async () => {
     try {
@@ -13,4 +10,6 @@ const connectMonDB = async () => {
         console.error("FAIL; Unable to connect to MongoDB Cluster", error)
     }
 }
+
+export default connectMonDB;
 
