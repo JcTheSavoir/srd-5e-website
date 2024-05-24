@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import connectMonDB from './config/connectMonDB.js';
-
+import userRoute from './routes/userRoute.js';
 
 //---------------------------{Variables} ----------------
 dotenv.config()
@@ -18,7 +18,8 @@ app.use(cors())
 //Connect to our database by calling the function
 connectMonDB();
 
-//-------------------------------{Imports for routes}-----------
+//------------------------------------{User Authentication Routes}---------
+app.use('/users', userRoute)
 
 //--------------------------------{Base Route}----------
 app.get('/', (req, res) => {
