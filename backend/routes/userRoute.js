@@ -1,8 +1,8 @@
 //Handling the URL routes for each CRUD operation for users
 //-----------------------------{Imports}-----------
 import express from 'express';
-import requireAuth from './middleware/requireAuth.';
-import userController from './controllers/userController.js'
+import requireAuth from '../middleware/requireAuth.js';
+import userController from '../controllers/userController.js'
 
 //---------------------------{Variables} ----------------
 const router = express.Router();

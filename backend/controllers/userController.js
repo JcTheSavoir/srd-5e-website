@@ -1,5 +1,5 @@
 //Handling the CRUD request function for users
-import User from '../models/user';
+import User from '../models/user.js'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -74,7 +74,7 @@ const logout = (req, res) => {
     res.sendStatus(200)
 }
 
-module.exports = {
+export default {
     signup,
     login,
     logout,
