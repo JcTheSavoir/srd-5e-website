@@ -13,26 +13,46 @@ function App() {
     username: "",
     password: "",
   });
+  // -----------------------------state for handling Error creating User
+  const [errorNewUser, setErrorNewUser] = useState("");
+  
 
   //------------------------ Function to create new user
   const createUser = async (e) => {
     e.preventDefault();
-    const res = await fetch('/backend/signup', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUser),
-    });
-    const data = await res.json();
-    console.log(data);
-    setLogin(() => [...login, data.log]);
+    //set errorNewUser to remove previous errors if they exist
+    setErrorNewUser("");
+    try {
+      const res = await fetch('/backend/signup', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      // if res.ok is falsy, then this will catch the error sent from the usercontroller in the backend and pass it
+      if(!res.ok) {
+        const errorCaught = await res.json();
+        console.log("Error caught:", errorCaught);
+        throw new Error(errorCaught.message || "unknown error");
+      //Otherwise, it will go as normal
+      } else {
+        const data = await res.json();
+        console.log(data);
+        setLogin(() => [...login, data.log]);
+      }
+
+    } catch (error) {
+      console.error('Issue creating User', error)
+      setErrorNewUser(error.message)
+    }
   };
 
   //-------------------------- Function to handle inputs for creating user
   const updateNewUserField = (e) => {
     const { value, name } = e.target;
-    console.log({ name, value });
+    // console.log({ name, value });
 
     setNewUser(() => ({
       ...newUser,
@@ -44,7 +64,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <Outlet context={{ updateNewUserField, newUser, createUser }} />
+      <Outlet context={{ updateNewUserField, newUser, createUser, errorNewUser }} />
 
     </div>
   )

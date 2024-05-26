@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 const Login = () => {
 
   //setting the variables passed to Outlet
-  const {updateNewUserField, newUser, createUser } = useOutletContext();
+  const {updateNewUserField, newUser, createUser, errorNewUser } = useOutletContext();
 
   return (
     // ---------------------------parent container for login and signup forms
@@ -26,6 +26,8 @@ const Login = () => {
 
 
         </div>
+        {/* ------------------------------------If there is an error creating the new user */}
+        {errorNewUser && <div className="errorSignup">{errorNewUser}</div>}
 
         {/* -----------------------------Parent Container for Signup Form */}
         <div className="signupContainer">

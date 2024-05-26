@@ -19,10 +19,21 @@ const signup = async(req, res) => {
         });
         console.log('User Created', newUser)
         //---------------------- Send response via status code.
-        res.sendStatus(201)
+        res.status(201).json({ message: "New User Created Successfully" })
     // VV------------------------VV--------Check for error, see if it's duplicate key error, print response
     } catch (error) {
         console.log(error)
+        if (error.code === 11000) {
+            const fields = Object.keys(error.keyPattern);
+            if (fields.includes('username') && fields.includes('email')) {
+                return res.status(409).json({message: "Both username and email are already being used"})
+            } else if (fields.includes('username')) {
+                return res.status(409).json({message: "This Username is already being used"});
+            } else if (fields.includes('email')) {
+                return res.status(409).json({ message: 'This Email is already being used'});
+            };
+        };
+        res.status(500).json({ message: "Server Error..."})
     }
 }
 
