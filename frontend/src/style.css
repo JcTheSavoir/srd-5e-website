@@ -26,11 +26,105 @@ text-align: center;
 }
 /* -----------------------------------End of NavBar Styling-------------------------- */
 
-/* -----------------------------------login/logout/Signup btn Component */
-
-.logBtn{
-  height: 100%;
-  background-color: transparent;
-  color: rgb(245, 245, 220);
-  text-decoration: none;
+/* ---------------------------------------------------Start of login/Signup page */
+.loginComponentContainer{
+  border: solid blue;
+  
+  display: flex;
+  flex-flow: column;
+  width: 95%;
+  height: 70vh;
+  justify-content: space-around;
+  align-items: center;
+  margin: 2rem auto 0 auto;
 }
+/* -----------------------login Form */
+.loginContainer{
+  margin: 1rem auto;
+  height: 50%;
+  width: 70%;
+}
+.loginForm{
+  border: solid red;
+  margin: 1em;
+  width: 95%;
+  height: 90%;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.labelNameEmailLogin{
+  font-size: x-large;
+  color: darkgoldenrod;
+  font-weight: bolder;
+}
+.inputNameEmailLogin{
+  height: 4rem;
+  width: 70%;
+  font-size: large;
+  text-align: center;
+}
+.labelPasswordLogin{
+  font-size: x-large;
+  color: darkgoldenrod;
+  font-weight: bolder;
+}
+.inputPasswordLogin{
+  height: 4rem;
+  width: 70%;
+  font-size: large;
+  text-align: center;
+}
+/* ---------------------Signup form */
+.signupContainer{
+  margin: 1rem auto;
+  height: 50%;
+  width: 70%;
+}
+.signupForm{
+  border: solid red;
+  margin: 1em;
+  width: 95%;
+  height: 90%;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.labelEmailSignup{
+  font-size: x-large;
+  color: darkgoldenrod;
+  font-weight: bolder;
+}
+.inputEmailSignup{
+  height: 4rem;
+  width: 70%;
+  font-size: large;
+  text-align: center;
+}
+.labelUsernameSignup{
+  font-size: x-large;
+  color: darkgoldenrod;
+  font-weight: bolder;
+}
+.inputUsernameSignup{
+  height: 4rem;
+  width: 70%;
+  font-size: large;
+  text-align: center;
+}
+.labelPasswordSignup{
+  font-size: x-large;
+  color: darkgoldenrod;
+  font-weight: bolder;
+}
+.inputPasswordSignup{
+  height: 4rem;
+  width: 70%;
+  font-size: large;
+  text-align: center;
+}
+/* ---------------------------------End of login/Signup page */
