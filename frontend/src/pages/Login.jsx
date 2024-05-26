@@ -1,4 +1,11 @@
+//-----------------------------------------Login/Signup page
+//------------------------------------Import to use the outlet context value
+import { useOutletContext } from 'react-router-dom'
 const Login = () => {
+
+  //setting the variables passed to Outlet
+  const {updateNewUserField, newUser, createUser } = useOutletContext();
+
   return (
     // ---------------------------parent container for login and signup forms
     <div className="loginComponentContainer">
@@ -22,13 +29,14 @@ const Login = () => {
 
         {/* -----------------------------Parent Container for Signup Form */}
         <div className="signupContainer">
-          <form className="signupForm" action="">
+          <form className="signupForm" onSubmit={createUser} >
             <label htmlFor="" className="labelEmailSignup">Enter Email</label>
-            <input maxLength='35' type="text" className="inputEmailSignup" />
+            <input onChange={updateNewUserField} name="email" value={newUser.email} maxLength='35' type="text" className="inputEmailSignup" />
             <label htmlFor="" className="labelUsernameSignup">Enter Username</label>
-            <input maxLength='15' type="text" className="inputUsernameSignup" />            
+            <input onChange={updateNewUserField} name="username" value={newUser.username} maxLength='15' type="text" className="inputUsernameSignup" />
             <label htmlFor="" className="labelPasswordSignup">Enter Password</label>
-            <input maxLength='20' type="text" className="inputPasswordSignup" />
+            <input onChange={updateNewUserField} name="password" value={newUser.password} maxLength='20' type="password" className="inputPasswordSignup" />
+            <button type="submit">Create Account</button>
           </form>
 
         </div>
