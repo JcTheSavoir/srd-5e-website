@@ -8,7 +8,7 @@ import userRoute from './routes/userRoute.js';
 
 //---------------------------{Variables} ----------------
 dotenv.config()
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const app = express()
 
 //Middleware from express and cors
@@ -19,7 +19,7 @@ app.use(cors())
 connectMonDB();
 
 //------------------------------------{User Authentication Routes}---------
-app.use('/users', userRoute)
+app.use('/', userRoute)
 
 //--------------------------------{Base Route}----------
 app.get('/', (req, res) => {

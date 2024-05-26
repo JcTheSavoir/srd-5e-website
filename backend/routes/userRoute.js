@@ -11,6 +11,6 @@ const router = express.Router();
 router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 router.post('/logout', requireAuth, userController.logout);
-router.get('check-auth', requireAuth, userController.checkAuth);
+router.get('/check-auth', requireAuth, userController.checkAuth);
 
 export default router;
