@@ -3,6 +3,57 @@ import User from '../models/user.js'
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+// ---------------------------------------------------------{Login}------------------
+const login = async(req, res) => {
+    try {
+    // Get email, username, and password 
+        const { emailOrUsername, password} = req.body
+    // 2. Find User with requested email or username
+        const user = await User.findOne({
+            $or: [{ username: emailOrUsername }, { email: emailOrUsername }]
+        });
+        console.log(`User: ${user}`)
+    // 2a. If there is no user send response error status code
+        if(!user) {
+            return res.status(401).json({ message: 'Username or Email is Incorrect' });
+        }
+    // 3. Compare password with foundUser
+        const passwordMatch = bcrypt.compareSync(password,user.password)
+        //3a. If the password doesn't match response error status code
+        if(!passwordMatch) {
+            return res.status(401).json({ message: 'Password is Incorrect' });
+        }
+    // 4. Create JWT (token)
+        // Date.now is in milliseconds ---> convert by the following: Date.now() + 1000 * 60 * 60 * 24 * 30
+        // exp is to set an expiration date for the token.  In this case it's 30 days
+        const exp = Date.now() + 1000 * 60 * 60 * 24 * 30
+        const token = jwt.sign({sub: user._id, exp}, process.env.SECRET)
+
+        // ----------------------------------------------------------Cookie
+        res.cookie("Authorization", token, {
+            // sets expiration 
+            expires: new Date(exp),
+            // allows only browser and server to read
+            httpOnly: true,
+            sameSite: "lax"
+        });
+        // 5. Send Response
+        //---------------------- Send response via status code (also send user data)
+        res.status(200).json({ user: {email: user.email, username: user.username, _id: user._id} })
+    } catch (error) {
+        console.log(error)
+        if (error.message) {
+            const fields = error.message;
+            if (fields.includes('Username or Email is Incorrect')) {
+                return res.status(401).json({message: "Username or Email is Incorrect"})
+            } else if (fields.includes('Password is Incorrect')) {
+                return res.status(401).json({message: "Password is Incorrect"});
+            };
+        };
+        res.status(500).json({ message: "Server Error..."})
+    }
+};
+
 // ------------------------------------------------{signup}------------------
 const signup = async(req, res) => {
     try {
@@ -19,15 +70,11 @@ const signup = async(req, res) => {
         });
         console.log('User Created', newUser)
 
-        //----------------VV ensure that password is not sent in the response VV
-        const userNoPass = {
-            email: newUser.email,
-            username: newUser.username,
-            _id: newUser._id,
-        };
+        //-----------------defining the body for use with the login function
+        req.body = { emailOrUsername: email, password };
+        //------------------Using the login function below to reduce redundant code
+        await login(req, res)
 
-        //---------------------- Send response via status code (also send user data)
-        res.status(201).json({ message: "New User Created Successfully", user: userNoPass })
     // VV------------------------VV--------Check for error, see if it's duplicate key error, print response
     } catch (error) {
         console.log(error)
@@ -45,42 +92,6 @@ const signup = async(req, res) => {
     }
 }
 
-// ---------------------------------------------------------{Login}------------------
-const login = async(req, res) => {
-    try {
-    // Get email, username, and password 
-        const {email, username, password} = req.body
-    // 2. Find User with requested email or username
-        const user = await User.findOne({
-            $or: [{username}, {email}]
-        });
-        console.log(`User: ${user}`)
-    // 2a. If there is no user send response error status code
-        if(!user) return res.sendStatus(401)
-    // 3. Compare password with foundUser
-        const passwordMatch = bcrypt.compareSync(password,user.password)
-        //3a. If the password doesn't match response error status code
-        if(!passwordMatch) return res.sendStatus(401)
-    // 4. Create JWT (token)
-        // Date.now is in milliseconds ---> convert by the following: Date.now() + 1000 * 60 * 60 * 24 * 30
-        // exp is to set an expiration date for the token.  In this case it's 30 days
-        const exp = Date.now() + 1000 * 60 * 60 * 24 * 30
-        const token = jwt.sign({sub: user._id, exp}, process.env.SECRET)
-
-        // ----------------------------------------------------------Cookie
-        res.cookie("Authorization", token, {
-            // sets expiration 
-            expires: new Date(exp),
-            // allows only browser and server to read
-            httpOnly: true,
-            sameSite: "lax"
-        });
-        // 5. Send Response
-        res.sendStatus(200)
-    } catch (error) {
-        console.log(error)
-    }
-};
 //----------------------------------------{authentication Check}----------------------
 const checkAuth = (req, res) => {
     console.log(req.user)

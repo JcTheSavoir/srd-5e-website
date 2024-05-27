@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Login = () => {
 
   //setting the variables passed to Outlet
-  const {updateNewUserField, newUser, createUser, errorNewUser, login, logout} = useOutletContext();
+  const {updateNewUserField, updateCurrentUserField, loginUser, newUser, currentUser, createUser, errorNewUser, errorCurrentUser, login, logout} = useOutletContext();
 
   return (
 
@@ -29,14 +29,17 @@ const Login = () => {
           {/* ------------------------------Parent container for login Form */}
           <div className="loginContainer">
 
-            <form className="loginForm" action="">
+            <form className="loginForm" onSubmit={loginUser}>
               <label htmlFor="" className="labelNameEmailLogin">Enter Username or Email</label>
-              <input maxLength='35' type="text" className="inputNameEmailLogin" />
-              <label htmlFor="" className="labelPasswordLogin">Enter</label>
-              <input maxLength='20' type="text" className="inputPasswordLogin" />
+              <input maxLength='35' onChange={updateCurrentUserField} name='emailOrUsername' value={currentUser.emailOrUsername} type="text" className="inputNameEmailLogin" />
+              <label htmlFor="" className="labelPasswordLogin">Enter Password</label>
+              <input maxLength='20' onChange={updateCurrentUserField} name='password' value={currentUser.password} type="password" className="inputPasswordLogin" />
+              <button type="submit">Login</button>
             </form>
 
           </div>
+          {/* ------------------------------------If there is an error logging in existing user */}
+          {errorCurrentUser && <div className="errorLogin">{errorCurrentUser}</div>}          
           {/* ------------------------------------If there is an error creating the new user */}
           {errorNewUser && <div className="errorSignup">{errorNewUser}</div>}
 
