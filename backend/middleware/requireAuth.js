@@ -17,7 +17,7 @@ const requireAuth = async( req, res, next) => {
         next()        
     } catch (error) {
         console.log("Authentication Failed", error)
-        return res.sentStatus(500)
+        return res.sendStatus(500)
     }
 };
 

@@ -5,15 +5,17 @@ import express from 'express';
 import cors from 'cors';
 import connectMonDB from './config/connectMonDB.js';
 import userRoute from './routes/userRoute.js';
+import cookieParser from 'cookie-parser';
 
 //---------------------------{Variables} ----------------
 dotenv.config()
 const PORT = process.env.PORT || 3000;
 const app = express()
 
-//Middleware from express and cors
+//Middleware from express, cors, and cookie-Parser
 app.use(express.json());
-app.use(cors())
+app.use(cors());
+app.use(cookieParser());
 
 //Connect to our database by calling the function
 connectMonDB();
