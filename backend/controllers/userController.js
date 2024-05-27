@@ -12,7 +12,7 @@ const login = async(req, res) => {
         const user = await User.findOne({
             $or: [{ username: emailOrUsername }, { email: emailOrUsername }]
         });
-        console.log(`User: ${user}`)
+        // console.log(`User: ${user}`)
     // 2a. If there is no user send response error status code
         if(!user) {
             return res.status(401).json({ message: 'Username or Email is Incorrect' });
@@ -94,8 +94,12 @@ const signup = async(req, res) => {
 
 //----------------------------------------{authentication Check}----------------------
 const checkAuth = (req, res) => {
-    console.log(req.user)
-    res.sendStatus(200)
+    //Ensure that it can be used to stay logged in during page refresh, send as actual json and not plain text
+    if(req.user) {
+        res.status(200).json({ user: req.user });
+    } else {
+        res.status(401).json({ message: 'Unauthorized' })
+    }
 }
 
 // ------------------------------------------------{Logout}------------------

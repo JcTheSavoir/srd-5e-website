@@ -14,7 +14,17 @@ const app = express()
 
 //Middleware from express, cors, and cookie-Parser
 app.use(express.json());
-app.use(cors());
+
+app.use(cors(({
+    //---------------Cors specific settings 
+    //---VV---Needed to let cookies be requested 
+    credentials: true,
+    // ---VV---Set for where the request should be coming from (May need modified for actual deployment?)
+    origin: 'http://localhost:5173',
+    // ---VV-----Set which headers to allow in request to the server.  Currently only 
+    // using this "Content-Type" header (May need updated)
+    allowedHeaders: ['Content-Type']
+})));
 app.use(cookieParser());
 
 //Connect to our database by calling the function
