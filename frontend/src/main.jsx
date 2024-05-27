@@ -10,6 +10,7 @@ import Options from './pages/Options.jsx'
 import Creatures from './pages/Creatures.jsx'
 import Login from './pages/Login.jsx'
 import Spells from './pages/Spells.jsx'
+import Create5E from './pages/Create5E.jsx'
 
 //routing for url links to different pages
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/spells',
         element: <Spells />
+      },
+      {
+        path: '/create',
+        element: <Create5E />
       }
     ]
   }

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 function App() {
   //---------------------State for checking if user is logged in
-  const [login, setLogin] = useState([])
+  const [login, setLogin] = useState(null)
 
   //----------------------State for creating a new user
   const [newUser, setNewUser] = useState({
@@ -39,8 +39,9 @@ function App() {
       //Otherwise, it will go as normal
       } else {
         const data = await res.json();
-        console.log(data);
-        setLogin(() => [...login, data.log]);
+        // console.log(data);
+        console.log(data.user);
+        setLogin(data.user);
       }
 
     } catch (error) {
@@ -61,10 +62,15 @@ function App() {
     console.log('Form Cleared')
   };
 
+  // -------------------------Function to handle logout to clear the "login" state
+  const logout = () => {
+    setLogin(null);
+  };
+
   return (
     <div className="App">
       <NavBar/>
-      <Outlet context={{ updateNewUserField, newUser, createUser, errorNewUser }} />
+      <Outlet context={{ updateNewUserField, newUser, createUser, errorNewUser, login, logout}} />
 
     </div>
   )

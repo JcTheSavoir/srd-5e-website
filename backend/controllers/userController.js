@@ -18,8 +18,16 @@ const signup = async(req, res) => {
             password: hashedPassword
         });
         console.log('User Created', newUser)
-        //---------------------- Send response via status code.
-        res.status(201).json({ message: "New User Created Successfully" })
+
+        //----------------VV ensure that password is not sent in the response VV
+        const userNoPass = {
+            email: newUser.email,
+            username: newUser.username,
+            _id: newUser._id,
+        };
+
+        //---------------------- Send response via status code (also send user data)
+        res.status(201).json({ message: "New User Created Successfully", user: userNoPass })
     // VV------------------------VV--------Check for error, see if it's duplicate key error, print response
     } catch (error) {
         console.log(error)
