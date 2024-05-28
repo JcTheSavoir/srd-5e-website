@@ -5,6 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import connectMonDB from './config/connectMonDB.js';
 import userRoute from './routes/userRoute.js';
+import itemRoute from './routes/uItemRoute.js'
 import cookieParser from 'cookie-parser';
 
 //---------------------------{Variables} ----------------
@@ -30,8 +31,11 @@ app.use(cookieParser());
 //Connect to our database by calling the function
 connectMonDB();
 
-//------------------------------------{User Authentication Routes}---------
-app.use('/', userRoute)
+//------------------------------------{User Routes}---------
+app.use('/', userRoute);
+
+//---------------------------------{User Item Routes}
+app.use('/items', itemRoute);
 
 //--------------------------------{Base Route}----------
 app.get('/', (req, res) => {
