@@ -4,54 +4,51 @@ import NavBar from './components/NavBar'
 import { Outlet } from 'react-router-dom';
 
 function App() {
-  //------------------------------------------------------------HOOKS
-  // State for checking if user is logged in
+  //----------------------------------------------------------------------------HOOKS
+  // ------------State for checking if user is logged in
   const [login, setLogin] = useState(null)
 
-  // State for creating a new user
+  // ------------State for creating a new user
   const [newUser, setNewUser] = useState({
     email: "",
     username: "",
     password: "",
   });
-  // state for logging in current user
+  // --------------state for logging in current user
   const [currentUser, setCurrentUser] = useState ({
     emailOrUsername: '',
     password: '',
   });
-  // state for handling Error creating User
+  // ------------state for handling Error creating User
   const [errorNewUser, setErrorNewUser] = useState("");
-  // state for handling Errors logging in User
+  // --------------state for handling Errors logging in User
   const [errorCurrentUser, setErrorCurrentUser] = useState('');
 
-  // Keep user logged in even if page is reloaded
+  // -----------Keep user logged in even if page is reloaded
   useEffect(() => {
     //Check authentication from backend, verify login
     const loginStatus = async () => {
       try {
         //fetching the authentication from backend route
-        console.log("Try went off in UseEffect")
         const res = await fetch('/backend/check-auth', {
           method: 'GET',
           credentials: 'include'
         });
-        console.log("log of res variable", res)
-        console.log("log of res.ok", res.ok)
         // if fetch is valid, this will set login to the user
         if (res.ok) {
-          console.log("if statement in use Effect went off")
           const data = await res.json();
-          console.log('log of data variable', data)
           setLogin(data.user)
+        // if response code is 401, it means either user or token were false in the backend
+        // an error is still sent to the console, but this is expected behavior 
+        } else if (res.status === 401) {
+          console.log("No valid user or token")
+          setLogin(null);
         // else, login is set to null
         } else {
-          console.log("else statement in useeffect went off")
           setLogin(null);
         };
       // If server error, still set login to null
       } catch (error) {
-        console.log("Catch statement in useEffect went off")
-        console.log('log of the error', error)
         console.error('Unable to fetch login status', error)
         setLogin(null)
       };
@@ -86,8 +83,6 @@ function App() {
       //Otherwise, it will go as normal
       } else {
         const data = await res.json();
-        // console.log(data);
-        console.log(data.user);
         setLogin(data.user);
       }
 
@@ -115,7 +110,7 @@ function App() {
       // from the usercontroller in the backend and pass it to the frontend
       if(!res.ok) {
         const errorCaught = await res.json();
-        console.log("Error caught:", errorCaught);
+        // console.log("Error caught:", errorCaught);
         throw new Error(errorCaught.message || "unknown error");
       //Otherwise, it will go as normal
       } else {
@@ -151,8 +146,27 @@ function App() {
     }));
   };
   // -------------------------Function to handle logout to clear the "login" state
-  const logout = () => {
-    setLogin(null);
+  const logout = async () => {
+    try {
+      //Call upon the logout route in the backend 
+      const res = await fetch('/backend/logout', {
+        method: 'POST',
+        credentials: 'include',
+      });
+      // check if response is valid (Response code is set in backend, res.ok is valid if the 
+      // status code received is 200-299).
+      if (res.ok) {
+        //If it is valid, then cookie should be cleared, so login state will be set to null
+        setLogin(null);
+      } else {
+        // If the response code sent is outside of 200-299, res.ok 
+        //will be set to false, and the else statement  is activated
+        console.error('Logout Failed')
+      }
+      // IF the fetch fails it will give an error, and the catch block will activate
+    } catch (error) {
+      console.error('Logout Failed', error)
+    };
   };
 
   return (
