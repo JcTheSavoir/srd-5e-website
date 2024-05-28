@@ -7,7 +7,12 @@ import { Navigate, useOutletContext } from 'react-router-dom';
 // given condition
 const RouteSecurity = ({ children }) => {
     //------------------------Import login state
-    const { login } = useOutletContext()
+    const { login, loading } = useOutletContext();
+    
+    //---------------------Prevent redirection while page is still loading
+    if (loading) {
+        return <h1>Loading...</h1>
+    };
 
     //---------------------------If login is null, (user not logged in) activated this
     if (!login) {

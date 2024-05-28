@@ -7,7 +7,10 @@ function App() {
   //----------------------------------------------------------------------------HOOKS
   // ------------State for checking if user is logged in
   const [login, setLogin] = useState(null)
-
+  // ------------State for loading (prevents navigation to login page during a refresh of the website, as
+  // during that brief moment, login state would temporarily be null, which would force navigation to 
+  // the login page per the RouteSecurity component)
+  const [loading, setLoading] = useState(true);
   // ------------State for creating a new user
   const [newUser, setNewUser] = useState({
     email: "",
@@ -51,6 +54,11 @@ function App() {
       } catch (error) {
         console.error('Unable to fetch login status', error)
         setLogin(null)
+      // "Finally" will load after the try catch has finished. This will help handle issue of 
+      // user being redirected while the token is still being processed
+      } finally {
+        // set loading to false once try catch has finished (defaults to true, so no need to change it back each time)
+        setLoading(false);
       };
     };
     //initialize the function
@@ -172,7 +180,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <Outlet context={{ updateNewUserField, updateCurrentUserField, newUser, currentUser, loginUser, createUser, errorNewUser, errorCurrentUser, login, logout}} />
+      <Outlet context={{ updateNewUserField, updateCurrentUserField, newUser, currentUser, loginUser, createUser, errorNewUser, errorCurrentUser, login, logout, loading}} />
 
     </div>
   );
