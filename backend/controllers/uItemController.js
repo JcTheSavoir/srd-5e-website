@@ -7,7 +7,7 @@ const createItem = async (req, res) => {
         // ----------------------------Get name, rarity, base, category, attunement, and description from request body
         const { name, rarity, base, category, attunement, description } = req.body;
         // --------------------------- Get Id of user creating the item
-        const createdBy = req.user._id;
+        const userCreatedBy = req.user._id;
         // ------------------------Create new item
         const newItem = await UItem.create({
             name,
@@ -16,7 +16,7 @@ const createItem = async (req, res) => {
             category,
             attunement,
             description,
-            createdBy,
+            userCreatedBy,
         });
         console.log('Item Created', newItem);
         // ----------------------Send response via status code (also send item data)
