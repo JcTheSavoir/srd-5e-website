@@ -15,6 +15,7 @@ import Creatures from './pages/Creatures.jsx'
 import Login from './pages/Login.jsx'
 import Spells from './pages/Spells.jsx'
 import Create5E from './pages/Create5E.jsx'
+import UsersContent from './pages/UsersContent.jsx'
 
 
 
@@ -55,7 +56,11 @@ const router = createBrowserRouter([
             <Create5E />
           </RouteSecurity>
         )
-      }
+      },
+      {
+        path: '/usersContent',
+        element: <UsersContent />
+      },      
     ]
   }
 ])

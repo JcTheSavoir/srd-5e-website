@@ -13,7 +13,7 @@ const requireOwner = async (req, res, next) => {
             return res.status(404).json({ message: 'Item not found' });
         };
         // if the item wasn't created by the user trying to edit it, send a forbidden response 
-        if (item.createdBy.toString() !== userId.toString()) {
+        if (item.userCreatedBy.toString() !== userId.toString()) {
             return res.status(403).json({ message: 'You do not have permission change this item' });
         };
         next();

@@ -41,7 +41,7 @@ const getUserItems = async (req, res) => {
     const userId = req.user._id;
     try {
         //--------------------- Find items based on the current users userId
-        const items = await UItem.find({ createdBy: userId });
+        const items = await UItem.find({ userCreatedBy: userId });
         console.log('Items Created by User:', items);
         res.status(200).json(items);
     } catch (error) {
@@ -53,7 +53,7 @@ const getUserItems = async (req, res) => {
 const getAllItems = async (req, res) => {
     try {
         // ----------- replacing the _id of the user with their username 
-        const items = await UItem.find().populate('createdBy', 'username');
+        const items = await UItem.find().populate('userCreatedBy', 'username');
         console.log('All Items', items);
         // ----------------------Send response via status code (also send item data)
         res.status(200).json(items);
@@ -68,7 +68,7 @@ const updateItem = async (req, res) => {
     const { itemId, ...updateData } = req.body;
 
     try {
-        const item = await UItem.findOne({ _id: itemId, createdBy: userId });
+        const item = await UItem.findOne({ _id: itemId, userCreatedBy: userId });
         if (!item) {
             return res.status(404).json({ message: 'Item not found' });
         };
@@ -93,7 +93,7 @@ const deleteItem = async (req, res) => {
 
     try {
         // find the item based off the items Id, and then delete it from the database
-        const item = await UItem.findOneAndDelete({ _id: itemId, createdBy: userId });
+        const item = await UItem.findOneAndDelete({ _id: itemId, userCreatedBy: userId });
         // if item isn't found, send the response error
         if (!item) {
             return res.status(404).json({ message: 'Item not found' });

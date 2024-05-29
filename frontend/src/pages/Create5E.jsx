@@ -57,12 +57,6 @@ const Create5E = () => {
     };
   };
   
-
-
-
-
-
-
   return (
     <div className="create5EComponentContainer">
       <h2 className="create5ETitle">Here you can Create *almost ANYTHING</h2>
