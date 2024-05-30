@@ -6,6 +6,10 @@ import DeleteBtn from '../Buttons/DeleteBtn';
 
 // -------------------- Props for edit, delete Functions, and single Item information
 const CarouselItem = (props) => {
+  // console.log('props.item', props.item);
+  // console.log('props.item._id', props.item._id);
+  // console.log('props.editItemId', props.editItemId);
+  // console.log('props.editItemId === props.item._id', props.editItemId === props.item._id);
 //---------------------------------------------VARIABLES
   const editingItem = props.editItemId === props.item._id;
   return (
@@ -33,7 +37,8 @@ const CarouselItem = (props) => {
         <div className="CarouselItemUpdateContainer">
           <h2 className="updateTitle">Here you can Update *almost ANYTHING</h2>
           <div className="updateSubTitle">Fill out the form below and click on the "Update" button</div>
-          <form className="updateForm" onSubmit={(e) => props.editItem(props.item, e)} method="PATCH">
+          {/* ---------------------------------------------IMPORTANT------- method='PATCH' and method="PUT" will not work here, as they default to GET.  HTML form element does not support PATCH or PUT */}
+          <form className="updateForm" onSubmit={(e) => props.editItem(props.item, e)}> {/* --------------------- This doens't work, specifying in function isntead // method='PATCH'*/}
             <label className="labelUpdateItemName">Name: <input maxLength="35" type="text" className="inputUpdateItemName" name="name" required /> </label> <br/>
             <label className="labelUpdateItemRarity">Rarity: <input maxLength="35" type="text" className="inputUpdateItemRarity" name="rarity" required /> </label> <br/>
             <label className="labelUpdateItemBase">Base: <input maxLength="35" type="text" className="inputUpdateItemBase" name="base" required /> </label> <br/>

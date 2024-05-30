@@ -63,15 +63,14 @@ const UsersContent = () => {
   const editItem = async (item, e) => {
     e.preventDefault();
     setErrorItems("");
-
     const itemForm = e.target;
     const formData = new FormData(itemForm);
     const updatedItem = Object.fromEntries(formData.entries());
     updatedItem.itemId = item._id;
-
+  
     try {
       const res = await fetch('/backend/items/update', {
-        method: itemForm.method,
+        method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
         },
@@ -130,6 +129,7 @@ const UsersContent = () => {
         </>
       ) : userItems.length === 0 ? (
         <>
+           <Carousel editItem={null} deleteItem={null} items={allItems} />
           <div className="contentContainerTitle">Looks like you haven't added any items yet (But others have!), feel free to join them by following the portal below!</div>
           <Link to='/create'>
             <div className="contentContainerLink">Portal to Creation</div>
@@ -138,7 +138,13 @@ const UsersContent = () => {
       ) : (
         <>
           <Carousel editItem={null} deleteItem={null} items={allItems} />
-          <Carousel editItem={editItem} editItemId={editItemId} setEditItemId={setEditItemId} deleteItem={deleteItem} items={userItems} />
+          <Carousel 
+            editItem={editItem} 
+            editItemId={editItemId} 
+            setEditItemId={setEditItemId} 
+            deleteItem={deleteItem} 
+            items={userItems} 
+            />
         </>
       )}
     </div>

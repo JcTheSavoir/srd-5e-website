@@ -25,7 +25,6 @@ const Create5E = () => {
     const formData = new FormData(itemForm);
       // ----VV----- Still needed because of how backend is setup, if the below comment is implemented, then this will no longer be needed
     const newItem = Object.fromEntries(formData.entries());    
-    
     try {
       const res = await fetch('/backend/items/create', {
         //-------------Uses the method specified in the <form> element

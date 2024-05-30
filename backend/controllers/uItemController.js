@@ -18,7 +18,7 @@ const createItem = async (req, res) => {
             description,
             userCreatedBy,
         });
-        console.log('Item Created', newItem);
+        // console.log('Item Created', newItem);
         // ----------------------Send response via status code (also send item data)
         res.status(201).json(newItem);
     } catch (error) {
@@ -42,7 +42,7 @@ const getUserItems = async (req, res) => {
     try {
         //--------------------- Find items based on the current users userId
         const items = await UItem.find({ userCreatedBy: userId });
-        console.log('Items Created by User:', items);
+        // console.log('Items Created by User:', items);
         res.status(200).json(items);
     } catch (error) {
         console.error('Error Fetching User Items', error);
@@ -54,7 +54,7 @@ const getAllItems = async (req, res) => {
     try {
         // ----------- replacing the _id of the user with their username 
         const items = await UItem.find().populate('userCreatedBy', 'username');
-        console.log('All Items', items);
+        // console.log('All Items', items);
         // ----------------------Send response via status code (also send item data)
         res.status(200).json(items);
     } catch (error) {

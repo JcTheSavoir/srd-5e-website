@@ -25,15 +25,25 @@ const Carousel = (props) => { //items, editItem, deleteItem
     const prevItem = () => {
         setCarouselIndex(carouselIndex - 1);
     };
-
-    // console.log(props.items, props.editItem, props.deleteItem)
+    // console.log('editItem', props.editItem);
+    // console.log('editItemId', props.editItemId);
+    // console.log('setEditItemId', props.setEditItemId);
+    // console.log('deleteItem', props.deleteItem);
+    // console.log('items', props.items);
 
     return (
         <div className="carouselContainer">
             <NavigationBtn buttonName="<" navigation={prevItem} />
             <div className="carouselConContents">
                 {props.items.slice(carouselIndex, carouselIndex + numberOfItems).map(item => (
-                    <CarouselItem key={item._id} item={item} editItem={props.editItem} editItemId={props.editItemId} setEditItemId={props.setEditItemId} deleteItem={props.deleteItem}/>
+                    <CarouselItem 
+                        key={item._id} 
+                        item={item} 
+                        editItem={props.editItem} 
+                        editItemId={props.editItemId} 
+                        setEditItemId={props.setEditItemId} 
+                        deleteItem={props.deleteItem}
+                    />
                 ))}
             </div>
             <NavigationBtn buttonName=">" navigation={nextItem} />
