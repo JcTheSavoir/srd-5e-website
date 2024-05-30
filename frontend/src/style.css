@@ -155,6 +155,71 @@ text-align: center;
 }
 /* ---------------------------------End of login/Signup page---------- */
 
+/* -----------------------------------------------------------------Start of Options Page styling */
+
+/* ---------------------------------End of options page styling-------- */
+.optionsPageContainer{
+  margin: 5em;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.optionsTitle{
+  color: rgb(0, 255, 255);
+}
+.optionsDescr{
+  font-size: large;
+}
+.optionsList{
+  list-style-type: none;
+  width: 100vw;
+  margin: 3em 0 0 0;
+  padding: 0;
+}
+
+.optionsList *{
+  text-decoration: none;
+}
+.optionLink1{
+  color: rgb(255, 215, 0);
+  text-shadow: 3px 3px 6px rgba(255, 215, 0, 0.8);
+}
+.optionLink2{
+  color: rgb(255, 215, 0);
+  text-shadow: 3px 3px 6px rgba(255, 215, 0, 0.8);
+}
+.optionLink3{
+  color: rgb(255, 215, 0);
+  text-shadow: 3px 3px 6px rgba(255, 215, 0, 0.8);
+}
+.optionListItem1{
+  padding: 1em 0;
+  font-size: xx-large;
+  text-align: center;
+  background-image: url(./greenPoison.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.optionListItem2{
+  padding: 1em 0;
+  font-size: xx-large;
+  text-align: center;
+  background-image: url(./greenPoison.gif);
+  backdrop-filter: invert(80%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.optionListItem3{
+  padding: 1em 0;
+  font-size: xx-large;
+  text-align: center;
+  background-image: url(./greenPoison.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /* -----------------------------------------------------------------Start of Create5E page styling */
 
 
