@@ -35,7 +35,7 @@ const CarouselItem = (props) => {
       </div>
       {editingItem && (
         <div className="CarouselItemUpdateContainer">
-          <h2 className="updateTitle">Here you can Update *almost ANYTHING</h2>
+          <h3 className="updateTitle">Here you can Update *almost ANYTHING</h3>
           <div className="updateSubTitle">Fill out the form below and click on the "Update" button</div>
           {/* ---------------------------------------------IMPORTANT------- method='PATCH' and method="PUT" will not work here, as they default to GET.  HTML form element does not support PATCH or PUT */}
           <form className="updateForm" onSubmit={(e) => props.editItem(props.item, e)}> {/* --------------------- This doens't work, specifying in function isntead // method='PATCH'*/}

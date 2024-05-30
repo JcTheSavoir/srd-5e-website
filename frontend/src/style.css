@@ -269,14 +269,6 @@ text-align: center;
   color: rgb(152, 161, 255);
   font-size: x-large;
 }
-.labelCreateItemName{}
-.inputCreateItemName{}
-.labelCreateItemRarity{}
-.inputCreateItemRarity{}
-.labelCreateItemBase{}
-.inputCreateItemBase{}
-.labelCreateItemCategory{}
-.inputCreateItemCategory{}
 .create5EAttunementRadio{
   display: flex;
   flex-flow: column;
@@ -302,19 +294,115 @@ text-align: center;
   text-align: center;
   background-color: rgba(255, 215, 0, 0.5);
 }
-
-.create5EDisclaimer{}
-
 /* ---------------------------------End of Create5E page styling------- */
 
 /* -----------------------------------------------------------------Start of UsersContent page styling */
 
+/* Carousel Styling */
+.carouselContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carouselConContents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.carouselItemContainer {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  border: solid black 1px;
+  margin: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
+.CarouselItemUpdateContainer {
+  height: 800px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.errorSignup {
+  color: rgb(255, 0, 0);
+  font-size: xxx-large;
+}
+
+/* -------------Update Form Styling */
+.updateForm {
+  border: solid black;
+  height: 80%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.updateForm > label {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: rgb(2, 12, 122);
+  font-size: x-large;
+}
+
+.updateForm > label > input,
+.updateForm > label > textarea {
+  width: 90%;
+  height: 2rem;
+  text-align: center;
+  background-color: rgba(255, 215, 0, 0.5);
+}
+
+.updateForm > label > textarea {
+  height: 100px;
+}
+
+.updateFormTitle {
+  text-align: center;
+  color: rgb(152, 161, 255);
+  font-size: x-large;
+}
+
+.updateAttunementRadio {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.updateAttunementTitle {
+  font-weight: 100;
+  color: rgb(2, 12, 122);
+  font-size: x-large;
+}
+
+.labelUpdateItemAttunement {
+  color: rgb(255, 100, 100);
+  font-size: x-large;
+}
+
+.labelUpdateItemDescription {
+  color: rgb(2, 12, 122);
+  font-size: x-large;
+}
+
+.inputUpdateItemDescription {
+  width: 90%;
+  height: 100px;
+  text-align: center;
+  background-color: rgba(255, 215, 0, 0.5);
+}
 
 /* ---------------------------------End of UsersContent page styling------- */
-
-/* ----------------------------------------------------- Start of Carousel and buttons styling */
-
-
-
-/* -----------------------------End of Carousel/Button styling-------------- */
 
