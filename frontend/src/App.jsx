@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './style.css'
 import NavBar from './components/NavBar'
 import { Outlet } from 'react-router-dom';
+import Footer from './components/Footer';
 
 function App() {
   //----------------------------------------------------------------------------HOOKS
@@ -181,7 +182,7 @@ function App() {
     <div className="App">
       <NavBar/>
       <Outlet context={{ updateNewUserField, updateCurrentUserField, newUser, currentUser, loginUser, createUser, errorNewUser, errorCurrentUser, login, logout, loading}} />
-
+      <Footer/>
     </div>
   );
 };

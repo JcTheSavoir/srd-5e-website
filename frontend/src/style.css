@@ -4,7 +4,12 @@ body{
   /* -----------------Main background for all webpages------------- */
   background-color: rgb(200, 180, 150)    
 }
-
+/* ------------------------------------App class styling */
+.App{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 /* ------------------------------Start of NavBar Styling---------------------- */
 .navbarContainer {
   padding: 0.5em;
@@ -25,141 +30,130 @@ color: rgb(255, 99, 71);
 text-align: center;
 }
 /* -----------------------------------End of NavBar Styling-------------------------- */
-
+/* ---------------------------------------------------Start of Footer styling */
+.footerContainer {
+  flex: 1;
+  position: relative;
+}
+.footerImg {
+  max-height: 100%;
+  width: 100%;
+  position: absolute;
+}
+/* -----------------------------------End of Footer styling */
 /* ---------------------------------------------------Start of login/Signup page */
-.loginComponentContainer{
-  border: solid blue;
-  
+.loginAndSignUpContainer{
   display: flex;
   flex-flow: column;
-  width: 95%;
-  height: 800px;
-  justify-content: space-around;
+  height: 1000px;
   align-items: center;
-  margin: 2rem auto 0 auto;
 }
   /* -----------------------Logged In Options */
-  .loggedInOptionsContainer{
-    border: solid red;
-
-    height: 30%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .loggedInTitle{
-    color: rgb(191, 29, 0);
-  }
-  .loggedInLogoutBtn{
-    font-size: xx-large;
-    border-radius: 30px;
-    padding: 0.5em;
-    background-color: rgb(90, 77, 65);
-    color: rgb(255, 99, 71);
-    transition: transform 0.1s ease-in-out;
-  }
-    /* For button click, to show it's being pressed */
-  .loggedInLogoutBtn:active {
+.loggedInOptionsContainer{
+  height: 1000px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url(./loggedInBackground.PNG);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.loggedInTitle{
+  color: rgb(174, 52, 0);
+  background-color: rgba(50, 12, 12, 0.669);
+  border-radius: 30px;
+}
+.loggedInLinks{
+  display: flex;
+  height: 30%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.loggedInLogoutBtn{
+  font-size: xx-large;
+  border-radius: 30px;
+  background-color: rgb(90, 77, 65);
+  color: rgb(255, 99, 71);
+  transition: transform 0.1s ease-in-out;
+  margin-bottom: 4rem;
+}
+  /* For button click, to show it's being pressed */
+.loggedInLogoutBtn:active {
   transform: scale(0.95);
-  }
+}
 
   /* -----------------------login Form */
 .loginContainer{
-  margin: 1rem auto;
+  width: 100%;
   height: 50%;
-  width: 70%;
+  background-image: url(./loginBackground.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .loginForm{
-  border: solid red;
-  margin: 1em;
-  width: 95%;
-  height: 90%;
-
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
 }
-.labelNameEmailLogin{
-  font-size: x-large;
-  color: darkgoldenrod;
-  font-weight: bolder;
-}
 .inputNameEmailLogin{
-  height: 4rem;
-  width: 70%;
+  height: 3rem;
+  width: 100%;
   font-size: large;
   text-align: center;
 }
-.labelPasswordLogin{
-  font-size: x-large;
-  color: darkgoldenrod;
-  font-weight: bolder;
-}
 .inputPasswordLogin{
-  height: 4rem;
-  width: 70%;
+  height: 3rem;
+  width: 100%;
   font-size: large;
   text-align: center;
 }
   /* ---------------------Signup form */
 .signupContainer{
-  margin: 1rem auto;
+
+  width: 100%;
   height: 50%;
-  width: 70%;
+  /* padding: 2rem; */
+  background-image: url(./signUpBackground.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .signupForm{
-  border: solid red;
-  margin: 1em;
-  width: 95%;
-  height: 90%;
-
+  height: 100%;
   display: flex;
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
 }
-.labelEmailSignup{
-  font-size: x-large;
-  color: darkgoldenrod;
-  font-weight: bolder;
-}
 .inputEmailSignup{
-  height: 4rem;
-  width: 70%;
+  height: 3rem;
+  width: 100%;
   font-size: large;
   text-align: center;
-}
-.labelUsernameSignup{
-  font-size: x-large;
-  color: darkgoldenrod;
-  font-weight: bolder;
 }
 .inputUsernameSignup{
-  height: 4rem;
-  width: 70%;
+  height: 3rem;
+  width: 100%;
   font-size: large;
   text-align: center;
 }
-.labelPasswordSignup{
-  font-size: x-large;
-  color: darkgoldenrod;
-  font-weight: bolder;
-}
 .inputPasswordSignup{
-  height: 4rem;
-  width: 70%;
+  height: 3rem;
+  width: 100%;
   font-size: large;
   text-align: center;
 }
 /* ---------------------------------End of login/Signup page---------- */
 
 /* -----------------------------------------------------------------Start of Options Page styling */
-
-/* ---------------------------------End of options page styling-------- */
 .optionsPageContainer{
-  margin: 5em;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -193,7 +187,7 @@ text-align: center;
   text-shadow: 3px 3px 6px rgba(255, 215, 0, 0.8);
 }
 .optionListItem1{
-  padding: 1em 0;
+  padding: 3rem 0;
   font-size: xx-large;
   text-align: center;
   background-image: url(./greenPoison.gif);
@@ -202,17 +196,16 @@ text-align: center;
   background-position: center;
 }
 .optionListItem2{
-  padding: 1em 0;
+  padding: 3rem 0;
   font-size: xx-large;
   text-align: center;
   background-image: url(./greenPoison.gif);
-  backdrop-filter: invert(80%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .optionListItem3{
-  padding: 1em 0;
+  padding: 3rem 0;
   font-size: xx-large;
   text-align: center;
   background-image: url(./greenPoison.gif);
@@ -220,6 +213,7 @@ text-align: center;
   background-repeat: no-repeat;
   background-position: center;
 }
+/* ---------------------------------End of options page styling-------- */
 /* -----------------------------------------------------------------Start of Create5E page styling */
 
 
