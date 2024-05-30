@@ -214,8 +214,96 @@ text-align: center;
   background-position: center;
 }
 /* ---------------------------------End of options page styling-------- */
-/* -----------------------------------------------------------------Start of Create5E page styling */
 
+/* -----------------------------------------------------------------Start of Create5E page styling */
+.create5EComponentContainer{
+  height: 800px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  background-image: url(./create5EBackground.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.errorSignup{
+  color: rgb(255, 0, 0);
+  font-size: xxx-large;
+}
+.create5ETitle{
+  margin: 0;
+  color: rgb(141, 150, 255);
+  font-size: xx-large;
+}
+/* -------------Create Form Styling */
+.create5EForm{
+  border: solid black;
+  width: 40%;
+  height: 80%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  background-image: url(./createFormBackground.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.create5EForm > label{
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: rgb(2, 12, 122);
+  font-size: x-large;
+}
+.create5EForm > label > input{
+  width: 90%;
+  height: 2rem;
+  text-align: center;
+  background-color: rgba(255, 215, 0, 0.5);
+}
+.create5EFormTitle{
+  text-align: center;
+  color: rgb(152, 161, 255);
+  font-size: x-large;
+}
+.labelCreateItemName{}
+.inputCreateItemName{}
+.labelCreateItemRarity{}
+.inputCreateItemRarity{}
+.labelCreateItemBase{}
+.inputCreateItemBase{}
+.labelCreateItemCategory{}
+.inputCreateItemCategory{}
+.create5EAttunementRadio{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.create5EAttunementTitle{
+  font-weight: 100;
+  color: rgb(2, 12, 122);
+  font-size: x-large;
+}
+.labelCreateItemAttunement{
+  color: rgb(255, 100, 100);
+  font-size: x-large;
+}
+
+.labelCreateItemDescription{
+  color: rgb(2, 12, 122);
+  font-size: x-large;
+}
+.inputCreateItemDescription{
+  width: 90%;
+  height: 100px;
+  text-align: center;
+  background-color: rgba(255, 215, 0, 0.5);
+}
+
+.create5EDisclaimer{}
 
 /* ---------------------------------End of Create5E page styling------- */
 
