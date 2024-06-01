@@ -19,18 +19,24 @@ const Carousel = (props) => { //items, editItem, deleteItem
 //-------------------------------------------------------------FUNCTIONS
     // ------------------ function for navigation button
     const nextItem = () => {
-        setCarouselIndex(carouselIndex + 1);
+        // if statement to ensure carousel doesn't continue when theres no other items to display
+        if (carouselIndex < props.items.length - numberOfItems ) {
+            setCarouselIndex(carouselIndex + 1);    
+        }
     };
     //-------------- Function for navigation button
     const prevItem = () => {
-        setCarouselIndex(carouselIndex - 1);
+        // if statement to ensure carousel doesn't continue left when there are no other items to display
+        if (carouselIndex > 0) {
+            setCarouselIndex(carouselIndex - 1);
+        }
     };
     // console.log('editItem', props.editItem);
     // console.log('editItemId', props.editItemId);
     // console.log('setEditItemId', props.setEditItemId);
     // console.log('deleteItem', props.deleteItem);
     // console.log('items', props.items);
-
+// console.log(props.items)
     return (
         <div className="carouselContainer">
             <NavigationBtn buttonName="<" navigation={prevItem} />
