@@ -47,11 +47,11 @@ const Create5E = () => {
       } else {
         const data = await res.json();
         // ----------------- Resets the form so more items can be created
-        itemForm.reset()
+        itemForm.reset();
       };
 
     } catch (error) {
-      console.error('Issue creating new item', error)
+      console.error('Issue creating new item', error);
       setErrorNewItem(error.message);
     };
   };
@@ -84,4 +84,4 @@ const Create5E = () => {
     </div>
   );
 };
-export default Create5E
+export default Create5E;

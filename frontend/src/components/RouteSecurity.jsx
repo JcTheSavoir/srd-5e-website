@@ -21,4 +21,4 @@ const RouteSecurity = ({ children }) => {
 
     return children;
 }
-export default RouteSecurity
+export default RouteSecurity;

@@ -1,5 +1,5 @@
 // --------------------------------------- Carousel Component for use in multiple places
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 // ---------------------Import for CarouselItem
 import CarouselItem from './CarouselItem';
 // ---------------------Import for the navigation button
@@ -22,21 +22,15 @@ const Carousel = (props) => { //items, editItem, deleteItem
         // if statement to ensure carousel doesn't continue when theres no other items to display
         if (carouselIndex < props.items.length - numberOfItems ) {
             setCarouselIndex(carouselIndex + 1);    
-        }
+        };
     };
     //-------------- Function for navigation button
     const prevItem = () => {
         // if statement to ensure carousel doesn't continue left when there are no other items to display
         if (carouselIndex > 0) {
             setCarouselIndex(carouselIndex - 1);
-        }
+        };
     };
-    // console.log('editItem', props.editItem);
-    // console.log('editItemId', props.editItemId);
-    // console.log('setEditItemId', props.setEditItemId);
-    // console.log('deleteItem', props.deleteItem);
-    // console.log('items', props.items);
-// console.log(props.items)
     return (
         <div className="carouselContainer">
             <NavigationBtn buttonName="<" navigation={prevItem} />

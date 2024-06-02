@@ -23,6 +23,6 @@ const Options = () => {
         </li>
       </ul>
     </div>
-  )
-}
-export default Options
+  );
+};
+export default Options;

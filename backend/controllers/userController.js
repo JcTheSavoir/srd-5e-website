@@ -7,18 +7,17 @@ import jwt from 'jsonwebtoken';
 const login = async(req, res) => {
     try {
     // Get email, username, and password 
-        const { emailOrUsername, password} = req.body
+        const { emailOrUsername, password} = req.body;
     // 2. Find User with requested email or username
         const user = await User.findOne({
             $or: [{ username: emailOrUsername }, { email: emailOrUsername }]
         });
-        // console.log(`User: ${user}`)
     // 2a. If there is no user send response error status code
         if(!user) {
             return res.status(401).json({ message: 'Username or Email is Incorrect' });
-        }
+        };
     // 3. Compare password with foundUser
-        const passwordMatch = bcrypt.compareSync(password,user.password)
+        const passwordMatch = bcrypt.compareSync(password,user.password);
         //3a. If the password doesn't match response error status code
         if(!passwordMatch) {
             return res.status(401).json({ message: 'Password is Incorrect' });
@@ -26,8 +25,8 @@ const login = async(req, res) => {
     // 4. Create JWT (token)
         // Date.now is in milliseconds ---> convert by the following: Date.now() + 1000 * 60 * 60 * 24 * 30
         // exp is to set an expiration date for the token.  In this case it's 30 days
-        const exp = Date.now() + 1000 * 60 * 60 * 24 * 30
-        const token = jwt.sign({sub: user._id, exp}, process.env.SECRET)
+        const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
+        const token = jwt.sign({sub: user._id, exp}, process.env.SECRET);
 
         // ----------------------------------------------------------Cookie
         res.cookie("Authorization", token, {
@@ -39,9 +38,9 @@ const login = async(req, res) => {
         });
         // 5. Send Response
         //---------------------- Send response via status code (also send user data)
-        res.status(200).json({ user: {email: user.email, username: user.username, _id: user._id} })
+        res.status(200).json({ user: {email: user.email, username: user.username, _id: user._id} });
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         if (error.message) {
             const fields = error.message;
             if (fields.includes('Username or Email is Incorrect')) {
@@ -68,16 +67,16 @@ const signup = async(req, res) => {
             username,
             password: hashedPassword
         });
-        console.log('User Created', newUser)
+        // console.log('User Created', newUser)
 
         //-----------------defining the body for use with the login function
         req.body = { emailOrUsername: email, password };
         //------------------Using the login function below to reduce redundant code
-        await login(req, res)
+        await login(req, res);
 
     // VV------------------------VV--------Check for error, see if it's duplicate key error, print response
     } catch (error) {
-        console.log(error)
+        // console.log(error);
         if (error.code === 11000) {
             const fields = Object.keys(error.keyPattern);
             if (fields.includes('username') && fields.includes('email')) {
@@ -88,9 +87,9 @@ const signup = async(req, res) => {
                 return res.status(409).json({ message: 'This Email is already being used'});
             };
         };
-        res.status(500).json({ message: "Server Error..."})
-    }
-}
+        res.status(500).json({ message: "Server Error..."});
+    };
+};
 
 //----------------------------------------{authentication Check}----------------------
 const checkAuth = (req, res) => {
@@ -99,14 +98,14 @@ const checkAuth = (req, res) => {
         res.status(200).json({ user: req.user });
     } else {
         res.status(401).json({ message: 'Unauthorized' })
-    }
-}
+    };
+};
 
 // ------------------------------------------------{Logout}------------------
 const logout = (req, res) => {
     res.clearCookie("Authorization")
     res.sendStatus(200)
-}
+};
 
 export default {
     signup,

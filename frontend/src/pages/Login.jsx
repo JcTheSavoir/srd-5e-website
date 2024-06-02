@@ -1,16 +1,14 @@
 //----------------------------------------------------Login/Signup page
 //------------------------------------Import to use the outlet context value
-import { useOutletContext } from 'react-router-dom'
+import { useOutletContext } from 'react-router-dom';
 //------------------------------------Import to use Link for page navigation
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
   //setting the variables passed to Outlet
   const {updateNewUserField, updateCurrentUserField, loginUser, newUser, currentUser, createUser, errorNewUser, errorCurrentUser, login, logout} = useOutletContext();
-
   return (
-
 // ---------------------------parent container for login component
     <div className="loginComponentContainer">
 {/* ----------------------Conditional rendering based on if a user is logged in or not. */}
@@ -67,6 +65,6 @@ const Login = () => {
       )}
     
     </div>
-  )
-}
-export default Login
+  );
+};
+export default Login;

@@ -25,39 +25,39 @@ const UsersContent = () => {
 //------------------------------------------------------------------FUNCTIONS
   //------------------Function for getting items created by the user
   const getItems = async () => {
-    setErrorItems("")
+    setErrorItems("");
     try {
       const res = await fetch ('/backend/items/user-items', {
         method: "GET",
         credentials: 'include',
       });
       if (!res.ok) {
-        throw new Error ("Failed to find user Items")
+        throw new Error ("Failed to find user Items");
       };
       const data = await res.json();
       // console.log("Current User Items:", data);
       setUserItems(data);
     } catch (error) {
       setErrorItems(error.message);
-    }
+    };
   };
   //------------------Function for getting all items created by all users
   const getAllItems = async() => {
-    setErrorItems("")
+    setErrorItems("");
     try {
       const res = await fetch ('/backend/items/all-items', {
         method: "GET",
         //no need for credentials as these won't be edited 
       });
       if (!res.ok) {
-        throw new Error ("Failed to find All Users Items")
+        throw new Error ("Failed to find All Users Items");
       };
       const data = await res.json();
       // console.log("All Items:", data);
       setAllItems(data);
     } catch (error) {
       setErrorItems(error.message);
-    }
+    };
   };
   // ------------------Function for editing items made by the user
   const editItem = async (item, e) => {
@@ -67,7 +67,6 @@ const UsersContent = () => {
     const formData = new FormData(itemForm);
     const updatedItem = Object.fromEntries(formData.entries());
     updatedItem.itemId = item._id;
-  
     try {
       const res = await fetch('/backend/items/update', {
         method: "PATCH",
@@ -88,7 +87,7 @@ const UsersContent = () => {
       console.log("EDIT ITEM, after setEditItemID")
     } catch (error) {
       setErrorItems(error.message);
-    }
+    };
   };
   // ------------------Function for deleting items made by the user
   const deleteItem = async (item) => {
@@ -108,7 +107,7 @@ const UsersContent = () => {
       } else {
         await getItems();
         await getAllItems();
-        console.log("Item deleted successfully")
+        console.log("Item deleted successfully");
       };
     } catch (error) { 
       console.error('Issue deleting this item', error);
@@ -150,4 +149,4 @@ const UsersContent = () => {
     </div>
   );
 };
-export default UsersContent
+export default UsersContent;

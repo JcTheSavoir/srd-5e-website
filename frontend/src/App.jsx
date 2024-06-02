@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import './style.css'
-import NavBar from './components/NavBar'
+import './style.css';
+import NavBar from './components/NavBar';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer';
 
 function App() {
   //----------------------------------------------------------------------------HOOKS
   // ------------State for checking if user is logged in
-  const [login, setLogin] = useState(null)
+  const [login, setLogin] = useState(null);
   // ------------State for loading (prevents navigation to login page during a refresh of the website, as
   // during that brief moment, login state would temporarily be null, which would force navigation to 
   // the login page per the RouteSecurity component)
@@ -41,7 +41,7 @@ function App() {
         // if fetch is valid, this will set login to the user
         if (res.ok) {
           const data = await res.json();
-          setLogin(data.user)
+          setLogin(data.user);
         // if response code is 401, it means either user or token were false in the backend
         // an error is still sent to the console, but this is expected behavior 
         } else if (res.status === 401) {
@@ -53,8 +53,8 @@ function App() {
         };
       // If server error, still set login to null
       } catch (error) {
-        console.error('Unable to fetch login status', error)
-        setLogin(null)
+        console.error('Unable to fetch login status', error);
+        setLogin(null);
       // "Finally" will load after the try catch has finished. This will help handle issue of 
       // user being redirected while the token is still being processed
       } finally {
@@ -96,9 +96,9 @@ function App() {
       }
 
     } catch (error) {
-      console.error('Issue creating User', error)
-      setErrorNewUser(error.message)
-    }
+      console.error('Issue creating User', error);
+      setErrorNewUser(error.message);
+    };
   };
   //--------------------------Function to handle login form being submitted
   const loginUser = async (e) => {
@@ -124,15 +124,13 @@ function App() {
       //Otherwise, it will go as normal
       } else {
         const data = await res.json();
-        // console.log(data);
-        // console.log(data.user);
         setLogin(data.user);
       }
     } catch (error) {
-      console.error('Issue logging in User', error)
-      setErrorCurrentUser(error.message)
-    }
-  }
+      console.error('Issue logging in User', error);
+      setErrorCurrentUser(error.message);
+    };
+  };
 
   //-------------------------- Function to handle inputs for creating user
   const updateNewUserField = (e) => {
@@ -170,11 +168,11 @@ function App() {
       } else {
         // If the response code sent is outside of 200-299, res.ok 
         //will be set to false, and the else statement  is activated
-        console.error('Logout Failed')
-      }
+        console.error('Logout Failed');
+      };
       // IF the fetch fails it will give an error, and the catch block will activate
     } catch (error) {
-      console.error('Logout Failed', error)
+      console.error('Logout Failed', error);
     };
   };
 
@@ -187,4 +185,4 @@ function App() {
   );
 };
 
-export default App
+export default App;

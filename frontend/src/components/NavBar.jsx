@@ -16,6 +16,6 @@ import { Link } from "react-router-dom"
                 <div>Sign-up/Login</div>
             </Link>
         </div>
-      )
-    }
- export default NavBar
+      );
+    };
+ export default NavBar;

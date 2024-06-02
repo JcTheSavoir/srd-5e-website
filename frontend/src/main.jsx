@@ -1,21 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './style.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './style.css';
 
 //Import for BrowserRouter, renaming it to Router
-import {RouterProvider, createBrowserRouter } from 'react-router-dom'
+import {RouterProvider, createBrowserRouter } from 'react-router-dom';
 //------------------------------Import for the new security routing
-import RouteSecurity from './components/RouteSecurity.jsx'
+import RouteSecurity from './components/RouteSecurity.jsx';
 
 //-----------Import for the different pages
-import Admin from './pages/Admin.jsx'
-import Options from './pages/Options.jsx'
-import Creatures from './pages/Creatures.jsx'
-import Login from './pages/Login.jsx'
-import Spells from './pages/Spells.jsx'
-import Create5E from './pages/Create5E.jsx'
-import UsersContent from './pages/UsersContent.jsx'
+import Admin from './pages/Admin.jsx';
+import Options from './pages/Options.jsx';
+import Creatures from './pages/Creatures.jsx';
+import Login from './pages/Login.jsx';
+import Spells from './pages/Spells.jsx';
+import Create5E from './pages/Create5E.jsx';
+import UsersContent from './pages/UsersContent.jsx';
 
 
 
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           <RouteSecurity>
             <Admin />
           </RouteSecurity>
-        )
+        ),
       },
       {
         path: '/creatures',
@@ -55,18 +55,18 @@ const router = createBrowserRouter([
           <RouteSecurity>
             <Create5E />
           </RouteSecurity>
-        )
+        ),
       },
       {
         path: '/usersContent',
         element: <UsersContent />
       },      
-    ]
-  }
-])
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
     <RouterProvider router={router} />
   // </React.StrictMode>,
-)
+);

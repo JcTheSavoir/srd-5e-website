@@ -2,7 +2,7 @@
 //-----------------------------{Imports}-----------
 import express from 'express';
 import requireAuth from '../middleware/requireAuth.js';
-import userController from '../controllers/userController.js'
+import userController from '../controllers/userController.js';
 
 //---------------------------{Variables} ----------------
 const router = express.Router();

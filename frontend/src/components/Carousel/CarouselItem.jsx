@@ -6,10 +6,6 @@ import DeleteBtn from '../Buttons/DeleteBtn';
 
 // -------------------- Props for edit, delete Functions, and single Item information
 const CarouselItem = (props) => {
-  // console.log('props.item', props.item);
-  // console.log('props.item._id', props.item._id);
-  // console.log('props.editItemId', props.editItemId);
-  // console.log('props.editItemId === props.item._id', props.editItemId === props.item._id);
 //---------------------------------------------VARIABLES
   const editingItem = props.editItemId === props.item._id;
   return (

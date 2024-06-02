@@ -4,6 +4,6 @@ const Footer = () => {
     <div className="footerContainer">
         <img className="footerImg" src={footerImage}/>
     </div>
-  )
-}
-export default Footer
+  );
+};
+export default Footer;
