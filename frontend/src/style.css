@@ -237,25 +237,33 @@ text-align: center;
   font-size: xx-large;
 }
 /* -------------Create Form Styling */
-.create5EForm{
+.create5EFormContainer{
   border: solid black;
   width: 40%;
   height: 80%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-around;
   background-image: url(./createFormBackground.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.create5EForm{
+    /* border: solid black; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgba(141, 11, 30, 0.6);
+}
+/* Styling for each label in the form */
 .create5EForm > label{
   width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
-  color: rgb(2, 12, 122);
+  color: rgb(187, 189, 255);
   font-size: x-large;
 }
 .create5EForm > label > input{
@@ -269,25 +277,27 @@ text-align: center;
   color: rgb(152, 161, 255);
   font-size: x-large;
 }
-.create5EAttunementRadio{
+.create5EAttunementRadioForm{
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 100%;
 }
 .create5EAttunementTitle{
   font-weight: 100;
-  color: rgb(2, 12, 122);
+  color: rgb(187, 189, 255);
   font-size: x-large;
 }
+.create5EAttunementSelectContainer{
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
 .labelCreateItemAttunement{
-  color: rgb(255, 100, 100);
+  color: rgb(255, 225, 78);
   font-size: x-large;
 }
 
-.labelCreateItemDescription{
-  color: rgb(2, 12, 122);
-  font-size: x-large;
-}
 .inputCreateItemDescription{
   width: 90%;
   height: 100px;

@@ -61,25 +61,27 @@ const Create5E = () => {
       {/* if there is an error when createing the new item, the user will get see this message*/}
       {errorNewItem && <div className="errorSignup">{errorNewItem}!</div>}
       <h2 className="create5ETitle">Here you can Create <em>*almost</em> ANYTHING</h2>
-      <form className="create5EForm" onSubmit={createItem} method="POST">
-        <h3 className="create5EFormTitle">Fill out the form below and click on the "create" button</h3>
-        <label className="labelCreateItemName">Name: <input maxLength="35" type="text" className="inputCreateItemName" name="name" required /> </label> 
-        <label className="labelCreateItemRarity">Rarity: <input maxLength="35" type="text" className="inputCreateItemRarity" name="rarity" required /> </label> 
-        <label className="labelCreateItemBase">Base: <input maxLength="35" type="text" className="inputCreateItemBase" name="base" required /> </label> 
-        <label className="labelCreateItemCategory">Category: <input maxLength="35" type="text" className="inputCreateItemCategory" name="category" required /> </label> 
-        <div className="create5EAttunementRadio">
-          <div className="create5EAttunementTitle">Does the Item Require Attunement?</div>
-          <div>
-            <label className="labelCreateItemAttunement">True: <input maxLength="35" type="radio" className="inputCreateItemAttunement" name="attunement" required value={true} /> </label>
-            <label className="labelCreateItemAttunement">False: <input maxLength="35" type="radio" className="inputCreateItemAttunement" name="attunement" required value={false} /> </label>
+      <div className="create5EFormContainer">
+        <form className="create5EForm" onSubmit={createItem} method="POST">
+          <h3 className="create5EFormTitle">Fill out the form below and click on the "create" button</h3>
+          <label className="labelCreateItemName">Name: <input maxLength="35" type="text" className="inputCreateItemName" name="name" required /> </label> 
+          <label className="labelCreateItemRarity">Rarity: <input maxLength="35" type="text" className="inputCreateItemRarity" name="rarity" required /> </label> 
+          <label className="labelCreateItemBase">Base: <input maxLength="35" type="text" className="inputCreateItemBase" name="base" required /> </label> 
+          <label className="labelCreateItemCategory">Category: <input maxLength="35" type="text" className="inputCreateItemCategory" name="category" required /> </label> 
+          <div className="create5EAttunementRadioForm">
+            <div className="create5EAttunementTitle">Does the Item Require Attunement?</div>
+            <div className="create5EAttunementSelectContainer">
+              <label className="labelCreateItemAttunement">True: <input maxLength="35" type="radio" className="inputCreateItemAttunement" name="attunement" required value={true} /> </label>
+              <label className="labelCreateItemAttunement">False: <input maxLength="35" type="radio" className="inputCreateItemAttunement" name="attunement" required value={false} /> </label>
+            </div>
           </div>
-        </div>
-        <label className="labelCreateItemDescription">Description: 
-          <textarea maxLength="500" type="text" className="inputCreateItemDescription" name="description" required />
-        </label>
-        
-        <button type="submit">Create Item</button>
-      </form>
+          <label className="labelCreateItemDescription">Description: 
+            <textarea maxLength="500" type="text" className="inputCreateItemDescription" name="description" required />
+          </label>
+
+          <button type="submit">Create Item</button>
+        </form>
+      </div>
       <p className="create5EDisclaimer">* Currently you are only able to create items.  Support for creating Creatures and Spells will come at a later time. </p>
     </div>
   );
