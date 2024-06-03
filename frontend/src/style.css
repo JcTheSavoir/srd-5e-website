@@ -332,10 +332,12 @@ text-align: center;
   align-items: center;
   justify-content: space-around;
 }
-
-.errorSignup {
-  color: rgb(255, 0, 0);
-  font-size: xxx-large;
+.carItemBottomDescription{
+  text-align: center;
+  font-weight: bold;
+}
+.carItemBottomInnerDescription{
+  font-weight: 100;
 }
 
 /* -------------Update Form Styling */

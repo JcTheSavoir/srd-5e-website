@@ -19,7 +19,9 @@ const CarouselItem = (props) => {
           <div className='carItemTopDetail4'>Attunement: {props.item.attunement === true ? 'Yes' : 'No'}</div>
         </div>
         <div className="carItemConBottom">
-          <div className="carItemBottomDescription">Description: {props.item.description}</div>
+          <div className="carItemBottomDescription">Description:
+            <div className='carItemBottomInnerDescription'>{props.item.description}</div>
+          </div>
         </div>
         {/* Conditionally render the edit and delete buttons, if they are null, then they will not render */}
         {props.editItem || props.deleteItem ? (
