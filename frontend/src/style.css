@@ -40,6 +40,9 @@ text-align: center;
   width: 100%;
   position: absolute;
 }
+.footerHiddenContents{
+  display: none;
+}
 /* -----------------------------------End of Footer styling */
 /* ---------------------------------------------------Start of login/Signup page */
 .loginAndSignUpContainer{
@@ -56,7 +59,7 @@ text-align: center;
   flex-flow: column;
   align-items: center;
   justify-content: space-between;
-  background-image: url(./loggedInBackground.PNG);
+  background-image: url(./loggedInBackground.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
