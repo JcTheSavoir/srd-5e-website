@@ -34,7 +34,7 @@ function App() {
     const loginStatus = async () => {
       try {
         //fetching the authentication from backend route
-        const res = await fetch('/backend/check-auth', {
+        const res = await fetch('/database/check-auth', {
           method: 'GET',
           credentials: 'include'
         });
@@ -75,7 +75,7 @@ function App() {
     //set errorNewUser to remove previous errors if they exist
     setErrorNewUser("");
     try {
-      const res = await fetch('/backend/signup', {
+      const res = await fetch('/database/signup', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ function App() {
     //set errorCurrentUser to remove previous errors if they exist
     setErrorCurrentUser("");
     try {
-      const res = await fetch('/backend/login', {
+      const res = await fetch('/database/login', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ function App() {
   const logout = async () => {
     try {
       //Call upon the logout route in the backend 
-      const res = await fetch('/backend/logout', {
+      const res = await fetch('/database/logout', {
         method: 'POST',
         credentials: 'include',
       });

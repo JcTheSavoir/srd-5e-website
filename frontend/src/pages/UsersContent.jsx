@@ -27,7 +27,7 @@ const UsersContent = () => {
   const getItems = async () => {
     setErrorItems("");
     try {
-      const res = await fetch ('/backend/items/user-items', {
+      const res = await fetch ('/database/items/user-items', {
         method: "GET",
         credentials: 'include',
       });
@@ -45,7 +45,7 @@ const UsersContent = () => {
   const getAllItems = async() => {
     setErrorItems("");
     try {
-      const res = await fetch ('/backend/items/all-items', {
+      const res = await fetch ('/database/items/all-items', {
         method: "GET",
         //no need for credentials as these won't be edited 
       });
@@ -68,7 +68,7 @@ const UsersContent = () => {
     const updatedItem = Object.fromEntries(formData.entries());
     updatedItem.itemId = item._id;
     try {
-      const res = await fetch('/backend/items/update', {
+      const res = await fetch('/database/items/update', {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ const UsersContent = () => {
   const deleteItem = async (item) => {
     setErrorItems("");
     try {
-      const res = await fetch ('/backend/items/delete', {
+      const res = await fetch ('/database/items/delete', {
         method: "DELETE",
         headers: {
           'Content-type': 'application/json',

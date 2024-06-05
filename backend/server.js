@@ -6,7 +6,7 @@ import express from 'express';
 console.log("express import successful")
 import cors from 'cors';
 console.log("cors import successful")
-import connectMonDB from './config/connectMonDB.js';
+import connectMonDB from './config/connectMonDb.js';
 console.log("connectMonDB.js import successful")
 import userRoute from './routes/userRoute.js';
 console.log("userRoute.js import successful")
@@ -28,7 +28,7 @@ app.use(cors(({
     //---VV---Needed to let cookies be requested 
     credentials: true,
     // ---VV---Set for where the request should be coming from (May need modified for actual deployment?)
-    origin: 'http://localhost:5173',
+    origin: 'http://0.0.0.0:5173',
     // ---VV-----Set which headers to allow in request to the server.  Currently only 
     // using this "Content-Type" header (May need updated)
     allowedHeaders: ['Content-Type'],
