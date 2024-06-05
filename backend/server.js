@@ -22,13 +22,13 @@ const app = express();
 
 //Middleware from express, cors, and cookie-Parser
 app.use(express.json());
-
+console.log(process.env.FRONTEND_URL)
 app.use(cors(({
     //---------------Cors specific settings 
     //---VV---Needed to let cookies be requested 
     credentials: true,
-    // ---VV---Set for where the request should be coming from (May need modified for actual deployment?)
-    origin: 'http://127.0.0.1:5173',
+    // ---VV---Set for where the request should be coming from (Uses one for development, and one for production)
+    origin: process.env.FRONTEND_URL,
     // ---VV-----Set which headers to allow in request to the server.  Currently only 
     // using this "Content-Type" header (May need updated)
     allowedHeaders: ['Content-Type'],
