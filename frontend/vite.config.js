@@ -7,6 +7,10 @@ export default defineConfig({
   //------- Change server from using 'localhost' to using '127.0.0.1'
   server: {
     host: '127.0.0.1'
+  },
+  // ------ change output to build directory for render
+  build: {
+    outDir: 'build'
   }
   //Proxy server for connecting frontend to backend for development environment, not for production
     // server: {
@@ -25,5 +29,5 @@ export default defineConfig({
     //     }
     //   }
     // }
-})
+});
 
