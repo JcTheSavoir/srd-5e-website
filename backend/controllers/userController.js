@@ -27,6 +27,8 @@ const login = async(req, res) => {
         // exp is to set an expiration date for the token.  In this case it's 30 days
         const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
         const token = jwt.sign({sub: user._id, exp}, process.env.SECRET);
+        // Check if token was successfully created with the login
+        console.log('Token Created from Login', token);
 
         // ----------------------------------------------------------Cookie
         res.cookie("Authorization", token, {
@@ -67,7 +69,7 @@ const signup = async(req, res) => {
             username,
             password: hashedPassword
         });
-        // console.log('User Created', newUser)
+        // console.log('User Created', newUser);  
 
         //-----------------defining the body for use with the login function
         req.body = { emailOrUsername: email, password };
@@ -90,9 +92,10 @@ const signup = async(req, res) => {
         res.status(500).json({ message: "Server Error..."});
     };
 };
-
+console.log('before auth')
 //----------------------------------------{authentication Check}----------------------
 const checkAuth = (req, res) => {
+    console.log('between auth')
     //Ensure that it can be used to stay logged in during page refresh, send as actual json and not plain text
     if(req.user) {
         res.status(200).json({ user: req.user });

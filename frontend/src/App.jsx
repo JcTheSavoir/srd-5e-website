@@ -85,6 +85,8 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newUser),
+        // ensure credentials are included for token during signup
+        credentials: 'include',
       });
 
       // if res.ok is falsy, then this will catch the error sent 
