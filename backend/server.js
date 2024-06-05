@@ -6,7 +6,7 @@ import express from 'express';
 console.log("express import successful")
 import cors from 'cors';
 console.log("cors import successful")
-import connectMonDB from './config/connectMonDb.js';
+import connectMonDB from './config/connectMonDB.js';
 console.log("connectMonDB.js import successful")
 import userRoute from './routes/userRoute.js';
 console.log("userRoute.js import successful")
