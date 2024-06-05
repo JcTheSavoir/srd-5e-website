@@ -1,8 +1,12 @@
+//------------------------------------------------------------------------Main Application file
 import { useState, useEffect } from 'react'
 import './style.css';
 import NavBar from './components/NavBar';
 import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer';
+//------------------------------------------------ variables:
+const apiURL = import.meta.env.VITE_API_URL
+
 
 function App() {
   //----------------------------------------------------------------------------HOOKS
@@ -34,7 +38,7 @@ function App() {
     const loginStatus = async () => {
       try {
         //fetching the authentication from backend route
-        const res = await fetch('/database/check-auth', {
+        const res = await fetch(`${apiURL}/check-auth`, {
           method: 'GET',
           credentials: 'include'
         });
@@ -75,7 +79,7 @@ function App() {
     //set errorNewUser to remove previous errors if they exist
     setErrorNewUser("");
     try {
-      const res = await fetch('/database/signup', {
+      const res = await fetch(`${apiURL}/signup`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +110,7 @@ function App() {
     //set errorCurrentUser to remove previous errors if they exist
     setErrorCurrentUser("");
     try {
-      const res = await fetch('/database/login', {
+      const res = await fetch(`${apiURL}/login`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +160,7 @@ function App() {
   const logout = async () => {
     try {
       //Call upon the logout route in the backend 
-      const res = await fetch('/database/logout', {
+      const res = await fetch(`${apiURL}/logout`, {
         method: 'POST',
         credentials: 'include',
       });

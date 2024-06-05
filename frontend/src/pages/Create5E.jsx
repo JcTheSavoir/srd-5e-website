@@ -4,6 +4,9 @@ import { useState } from "react";
 // ---------------------------Import to use Link for page navigation if needed
 import { Link } from "react-router-dom";
 
+// ---------------------------------------------------------VARIABLES
+const apiURL = import.meta.env.VITE_API_URL
+
 const Create5E = () => {
 // ----------------------------------------------------------------HOOKS
   // --------------------------State for handling error creating items
@@ -26,7 +29,7 @@ const Create5E = () => {
       // ----VV----- Still needed because of how backend is setup, if the below comment is implemented, then this will no longer be needed
     const newItem = Object.fromEntries(formData.entries());    
     try {
-      const res = await fetch('/database/items/create', {
+      const res = await fetch(`${apiURL}/items/create`, {
         //-------------Uses the method specified in the <form> element
         method: itemForm.method,
         headers: {

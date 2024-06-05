@@ -28,7 +28,7 @@ app.use(cors(({
     //---VV---Needed to let cookies be requested 
     credentials: true,
     // ---VV---Set for where the request should be coming from (May need modified for actual deployment?)
-    origin: 'http://0.0.0.0:5173',
+    origin: 'http://127.0.0.1:5173',
     // ---VV-----Set which headers to allow in request to the server.  Currently only 
     // using this "Content-Type" header (May need updated)
     allowedHeaders: ['Content-Type'],

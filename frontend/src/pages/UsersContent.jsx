@@ -5,6 +5,9 @@ import Carousel from "../components/Carousel/Carousel";
 // ----------------import the Link component
 import { Link } from "react-router-dom";
 
+//------------------------------------------------------VARIABLES
+const apiURL = import.meta.env.VITE_API_URL
+
 
 const UsersContent = () => {
 // ------------------------------------------------------------------HOOKS
@@ -27,7 +30,7 @@ const UsersContent = () => {
   const getItems = async () => {
     setErrorItems("");
     try {
-      const res = await fetch ('/database/items/user-items', {
+      const res = await fetch (`${apiURL}/items/user-items`, {
         method: "GET",
         credentials: 'include',
       });
@@ -45,7 +48,7 @@ const UsersContent = () => {
   const getAllItems = async() => {
     setErrorItems("");
     try {
-      const res = await fetch ('/database/items/all-items', {
+      const res = await fetch (`${apiURL}/items/all-items`, {
         method: "GET",
         //no need for credentials as these won't be edited 
       });
@@ -68,7 +71,7 @@ const UsersContent = () => {
     const updatedItem = Object.fromEntries(formData.entries());
     updatedItem.itemId = item._id;
     try {
-      const res = await fetch('/database/items/update', {
+      const res = await fetch(`${apiURL}/items/update`, {
         method: "PATCH",
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +96,7 @@ const UsersContent = () => {
   const deleteItem = async (item) => {
     setErrorItems("");
     try {
-      const res = await fetch ('/database/items/delete', {
+      const res = await fetch (`${apiURL}/items/delete`, {
         method: "DELETE",
         headers: {
           'Content-type': 'application/json',
