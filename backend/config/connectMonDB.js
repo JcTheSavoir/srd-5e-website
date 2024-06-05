@@ -1,6 +1,7 @@
 // Connecting to the MongoDB database using mongoose
 // 1. // -------------------{imports}--------------
 // github showing file as connectmonDB.js instead of it's current "connectMonDB.js".  Checking if recommit will resolve the issue
+// renamed file, and now renaming back to what it was 
 import mongoose from 'mongoose'
 
 const connectMonDB = async () => {
