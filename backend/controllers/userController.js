@@ -29,6 +29,8 @@ const login = async(req, res) => {
         const token = jwt.sign({sub: user._id, exp}, process.env.SECRET);
         // Check if token was successfully created with the login
         console.log('Token Created from Login', token);
+        // Check which PRODUCTION environment variable is being used
+        console.log('Production variable', process.env.PRODUCTION);
 
         // ----------------------------------------------------------Cookie
         res.cookie("Authorization", token, {
@@ -36,7 +38,9 @@ const login = async(req, res) => {
             expires: new Date(exp),
             // allows only browser and server to read
             httpOnly: true,
-            sameSite: "lax"
+            // for secure cookies when in production (currently render)
+            secure: process.env.PRODUCTION === 'true',
+            sameSite: "lax",
         });
         // 5. Send Response
         //---------------------- Send response via status code (also send user data)
