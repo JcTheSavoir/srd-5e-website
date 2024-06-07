@@ -42,6 +42,9 @@ const login = async(req, res) => {
             secure: process.env.PRODUCTION === 'true',
             sameSite: "lax",
         });
+        //-------- Console.log for token/cookie issue not working correctly in production
+        console.log("Cookie sent with token information", token);
+
         // 5. Send Response
         //---------------------- Send response via status code (also send user data)
         res.status(200).json({ user: {email: user.email, username: user.username, _id: user._id} });
