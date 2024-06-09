@@ -8,11 +8,16 @@ const requireAuth = async( req, res, next) => {
         const token = req.cookies.Authorization;
         // If no token is available (as in a user isn't currently logged in) then the code will send
         // a 401 code (these will help prevent the catch block from firing)
+        //check for token being received
+        console.log('Token Received during request', token);
+
         if (!token) {
             return res.status(401).json({ message: 'No token available' });
         };
         // 2. Decode Token --> jwt
         const decoded = jwt.verify(token, process.env.SECRET);
+        //check for decoded token
+        console.log('Token after decode', decoded);
         // 3. Find user [decoded sub]
         const user = await User.findById(decoded.sub);
         // if no user can be found, then another 401 code with message 
@@ -23,7 +28,7 @@ const requireAuth = async( req, res, next) => {
         req.user = user;
         next();       
     } catch (error) {
-        // console.log("Authentication Failed", error);
+        console.log("Authentication Failed", error);
         return res.status(500).json({ message: "Server Error..." });
     };
 };
