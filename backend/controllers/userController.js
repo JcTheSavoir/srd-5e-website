@@ -40,7 +40,8 @@ const login = async(req, res) => {
             httpOnly: true,
             // for secure cookies when in production (currently render)
             secure: process.env.PRODUCTION === 'true',
-            sameSite: "lax",
+            // set-cookie response header blocked because it was set to lax.  
+            sameSite: "None",
         });
         //-------- Console.log for token/cookie issue not working correctly in production
         console.log("Cookie sent with token information", token);
